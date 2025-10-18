@@ -139,8 +139,9 @@ def lambda_handler(event, context):
                         },
                         'recordingMode': {'recordingFrequency': 'CONTINUOUS'},
                     })
-                logging.info(f'Response for put_configuration_recorder :{response} ')
-
+                logging.warning(
+                    f"Configuration Recorder reset to default. Response: {json.dumps(response, default=str)}"
+                )
             else:
                 if CONFIG_RECORDER_STRATEGY == 'EXCLUSION':
                     # Original exclusion-based code - EXACTLY as in the working version
